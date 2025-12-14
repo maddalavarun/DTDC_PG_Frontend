@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
     server: {
+        host: '0.0.0.0',
+        port: process.env.PORT || 5173,
         proxy: {
             '/api': {
                 target: 'https://dtdc-backend.onrender.com',
@@ -10,5 +12,9 @@ export default defineConfig({
                 secure: false,
             },
         },
+    },
+    preview: {
+        host: '0.0.0.0',
+        port: process.env.PORT || 4173,
     },
 })
