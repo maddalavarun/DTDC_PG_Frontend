@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('show');
+        entry.target.classList.add('active');
       }
     });
   }, {
     threshold: 0.1
   });
 
-  document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
   // --- 3D Tilt Effect for Service Cards ---
   const cards = document.querySelectorAll('.service-card');
