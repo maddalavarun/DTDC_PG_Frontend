@@ -1008,14 +1008,18 @@ footer {
 ======================================== */
 @media (max-width: 768px) {
 
-  /* Mobile Bottom Navigation */
+  /* Mobile Bottom Navigation - Enhanced Glassmorphism */
   .header {
     top: auto;
     bottom: 0;
-    height: auto;
-    padding: var(--space-sm) 0;
-    border-top: 1px solid var(--gray-200);
+    height: 70px;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-bottom: none;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
   }
 
   .logo {
@@ -1024,50 +1028,95 @@ footer {
 
   .nav-links {
     justify-content: space-around;
+    align-items: center;
     width: 100%;
+    height: 100%;
     gap: 0;
-    padding: 0 var(--space-sm);
+    padding: 0;
+  }
+
+  .nav-links li {
+    flex: 1;
   }
 
   .nav-links li a {
+    height: 100%;
+    display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: 0.7rem;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--gray-500);
     border-bottom: none;
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: var(--primary);
   }
 
   .nav-icon {
     display: block;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    transition: var(--transition-base);
   }
 
-  /* Hero */
+  .nav-links li a:hover .nav-icon {
+    transform: translateY(-2px);
+    color: var(--secondary);
+  }
+
+  /* Hero - Mobile Optimization */
   .hero {
-    padding: var(--space-3xl) var(--space-md) 120px;
-    min-height: auto;
+    padding: var(--space-4xl) var(--space-md) 100px;
+    /* Adjust for bottom nav */
+    min-height: 80vh;
+    text-align: center;
+    background-size: 200% 200%;
   }
 
-  .hero::before {
-    display: none;
+  .hero::before,
+  .hero::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0.15;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 6px 16px;
+    margin-bottom: var(--space-lg);
   }
 
   .hero h1 {
-    font-size: 2.25rem;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
   }
 
   .hero p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 auto var(--space-xl);
+    max-width: 90%;
   }
 
   .hero-actions {
     flex-direction: column;
-    gap: var(--space-sm);
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: var(--space-md);
   }
 
   .btn {
     width: 100%;
+    height: 52px;
+    font-size: 0.95rem;
     justify-content: center;
   }
 
@@ -1076,59 +1125,91 @@ footer {
     border-radius: var(--radius-lg);
     gap: var(--space-sm);
     padding: var(--space-sm);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--space-xl);
   }
 
   .tracking-widget input {
+    height: 50px;
+    font-size: 1rem;
     text-align: center;
   }
 
   .tracking-widget button {
     width: 100%;
+    height: 50px;
   }
 
-  /* Services */
+  /* Section Spacing */
+  .section-padding {
+    padding: var(--space-3xl) 0;
+  }
+
+  .section-padding-compact {
+    padding: var(--space-2xl) 0;
+  }
+
+  /* Typography Scaling */
+  .section-title h2 {
+    font-size: 1.75rem;
+  }
+
+  .section-title p {
+    font-size: 0.9rem;
+    padding: 0 var(--space-sm);
+  }
+
+  /* Services Grid */
   .services-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-md);
+    gap: var(--space-lg);
   }
 
   .service-card {
+    padding: var(--space-xl);
+  }
+
+  /* International Detail Cards */
+  .intl-details-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .intl-card {
     padding: var(--space-lg);
   }
 
-  /* Features */
-  .features-grid-compact {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+  .intl-icon-box {
+    width: 44px;
+    height: 44px;
   }
 
-  /* International Details */
-  .intl-details-grid {
+  /* Feature Grid */
+  .features-grid-compact {
     grid-template-columns: 1fr;
-    gap: var(--space-md);
+    gap: var(--space-lg);
   }
 
   .feature-item {
-    padding: var(--space-lg);
-  }
-
-  /* Pickup */
-  .pickup-section {
-    padding: var(--space-2xl) var(--space-lg);
-    border-radius: var(--radius-lg);
-  }
-
-  .pickup-section::before {
-    display: none;
-  }
-
-  /* Contact */
-  .contact-info {
     padding: var(--space-xl);
     text-align: center;
   }
 
-  .contact-info .section-title {
+  /* Pickup Section */
+  .pickup-section {
+    padding: var(--space-3xl) var(--space-lg);
+    border-radius: var(--radius-xl);
+    margin: 0 var(--space-sm);
+  }
+
+  .pickup-section .hero-tag {
+    font-size: 0.75rem;
+    padding: 6px 16px !important;
+  }
+
+  /* Contact Information */
+  .contact-info {
+    padding: var(--space-xl);
     text-align: center;
   }
 
@@ -1137,28 +1218,25 @@ footer {
   }
 
   .map-actions {
-    justify-content: center;
+    flex-direction: column;
+    width: 100%;
   }
 
-  .contact-map iframe {
-    min-height: 300px;
+  .map-actions .btn {
+    width: 100%;
   }
 
-  /* Footer */
+  /* Footer Refinement */
   .footer-content {
     flex-direction: column;
-    gap: var(--space-md);
+    gap: var(--space-xl);
     text-align: center;
   }
 
-  /* WhatsApp */
+  /* WhatsApp FAB - Adjusted for Bottom Nav */
   .whatsapp-fab {
     bottom: 90px;
-    right: var(--space-md);
-  }
-
-  .fab-label {
-    display: none;
+    right: 20px;
   }
 
   .fab-circle {
@@ -1170,17 +1248,25 @@ footer {
 /* ========================================
    SMALL MOBILE
 ======================================== */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .nav-links li a {
+    font-size: 0.6rem;
+    gap: 4px;
+  }
+}
+
 @media (max-width: 375px) {
   .hero h1 {
     font-size: 1.875rem;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
   .nav-links li a {
-    font-size: 0.65rem;
+    font-size: 0.55rem;
+    gap: 3px;
   }
 }
 
