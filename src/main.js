@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
-        const headerOffset = window.innerWidth <= 768 ? 0 : 100;
+        const headerOffset = window.innerWidth <= 768 ? 80 : 100;
         const elementPosition = target.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -213,9 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.forEach(link => {
           link.classList.remove('active');
           if (link.getAttribute('href') === `#${sectionId}`) {
-            link.style.color = '#003A8F';
-          } else {
-            link.style.color = '';
+            link.classList.add('active');
           }
         });
       }
