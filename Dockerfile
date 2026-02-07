@@ -44,5 +44,6 @@ COPY --from=build-stage /app/dist /app/dist
 # Expose port (Cloud Run uses PORT env var, but 8080 is default)
 EXPOSE 8080
 
-# Run the application
-CMD ["python", "app.py"]
+# Run the application using Gunicorn for production
+# We use 1 worker because each worker runs a Selenium instance which is memory intensive
+CMD ["gunicorn", "--bind", ":8080", "--workers", "1", "--timeout", "120", "app:app"]
