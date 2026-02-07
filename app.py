@@ -8,7 +8,7 @@ app = Flask(__name__, static_folder='dist', static_url_path='')
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
-@app.route('/track', methods=['POST'])
+@app.route('/api/track', methods=['POST'])
 def track():
     data = request.get_json()
     if not data or 'tracking_id' not in data:
