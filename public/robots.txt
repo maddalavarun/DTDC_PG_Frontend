@@ -1,0 +1,6 @@
+# Robots.txt for dtdcpedagantyada.in
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dtdcpedagantyada.in/sitemap.xml
